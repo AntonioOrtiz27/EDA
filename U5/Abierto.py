@@ -9,7 +9,7 @@ class TablaHashA:
         #aqui lo que hago es obtener el entero del tamaño dividido en 0.7 luego redondearlo ya que necesito un numero entero y finalmente
         #envio el valor resultante a la funcion obtener primo que devuelve el valor que envie si es primo o el primo siguiente
         #asi finalmente el tamaño de la tabla es un primo que cumple con las condiciones necesarias
-        self.__tamaño = self.getPrimo(round(tamaño/0.7))
+        self.__tamaño = int(np.ceil(self.getPrimo(tamaño/0.7)))
         self.__tabla = np.full(self.__tamaño,None,dtype = object)
         
     def es_primo(self,n):

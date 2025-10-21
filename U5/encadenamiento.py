@@ -10,7 +10,7 @@ class TablaHashE:
         #aqui lo que hago es obtener el entero del tamaño dividido en 0.7 luego redondearlo ya que necesito un numero entero y finalmente
         #envio el valor resultante a la funcion obtener primo que devuelve el valor que envie si es primo o el primo siguiente
         #asi finalmente el tamaño de la tabla es un primo que cumple con las condiciones necesarias
-        self.__tamaño = self.obtener_primo(round(tamaño/0.7))
+        self.__tamaño = int(np.ceil(self.obtener_primo(tamaño/0.7)))
         #en este ejercicio decidi que era bastante comodo hacer un arreglo numpy de listas enlazadas 
         self.__tabla = np.array([ListaEnlazada() for _ in range(self.__tamaño)], dtype=ListaEnlazada)
     
