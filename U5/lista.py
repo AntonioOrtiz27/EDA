@@ -13,7 +13,7 @@ class ListaEnlazada:
             actual = actual.getSig()
         return " -> ".join(elementos)
 
-    def insertar(self, valor: str) -> None:
+    def insertarEnteros(self, valor: int) -> None:
         nuevo = Nodo(valor)
         actual = self.__cabeza
         repetido = False
@@ -30,6 +30,24 @@ class ListaEnlazada:
                 print(f"el elemento {valor} no se inserto ya esta en la tabla")
             if not repetido:
                 actual.setSig(nuevo)
+                
+    def insertarCadenas(self, valor: str) -> None:
+        nuevo = Nodo(valor)
+        actual = self.__cabeza
+        repetido = False
 
+        if not actual:
+            self.__cabeza = nuevo
+        else:
+            while actual.getSig() != None:
+                if actual.getElem() == valor:
+                    repetido = True
+                actual = actual.getSig()
+            if actual.getElem() == valor:
+                repetido = True
+                print(f"El equipo {valor} no se agrego a la tabla anual por que ya esta en la liga(LPF)")
+            if not repetido:
+                actual.setSig(nuevo)
+                
     def getCabeza(self):
         return self.__cabeza
