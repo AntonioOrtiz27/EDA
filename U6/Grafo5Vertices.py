@@ -80,6 +80,7 @@ class Grafo:
                     pila.append(i)  
        
        return all(visitados) 
+   
        ''' El método all() de Python es una función incorporada que devuelve VERDADERO
         si todos los elementos de un iterable proporcionado (Lista, Diccionario, Tupla, Conjunto, etc.)
         son Verdaderos, de lo contrario, devuelve FALSO".'''
@@ -108,4 +109,4 @@ if __name__ == "__main__":
     if grafo.es_conexo():
         print("El grafo es Conexo" )
     else:
-        print('El grafo NO es Conexo')
+        print('El grafo NO es Conexo')

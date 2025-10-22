@@ -5,8 +5,8 @@ if __name__=="__main__":
     
     # Utilizando el metodo de las divisiones sucesivas
 
-    tabla_encadenada= TablaHashE(100)    
-    tabla_direccionamiento = TablaHashA(100)
+    tabla_encadenada= TablaHashE(5)    
+    tabla_direccionamiento = TablaHashA(10)
     claves = [66,467,566,735,285,87,66]
     
     print("----TABLA HASH DIRECCIONAMIENTO ABIERTO-----")
@@ -28,13 +28,12 @@ if __name__=="__main__":
     tabla_encadenada.mostrarEncadenamiento()
     
     # Utilizando un metodo alfanumerico
+
+    print("---- TABLA HASH DIRECCIONAMIENTO ABIERTO CON EQUIPOS DE ARGENTINA -----")
     
     t_direccionamiento = TablaHashA(13.5)
-    t_encadenada = TablaHashE(13.5)
     equipos = ['Boca','River','Racing','San Lorenzo','Velez']
     # el 13.5 redondea a 20 claves, el motivo del valor es para simular la liga.
-    
-    print("---- TABLA HASH DIRECCIONAMIENTO ABIERTO CON EQUIPOS DE ARGENTINA -----")
     
     # Insertar
     for equipo in equipos:
@@ -48,8 +47,18 @@ if __name__=="__main__":
 
     print("---- TABLA HASH ENCADENADA CON EQUIPOS DE ARGENTINA -----")
     
+    t_encadenada = TablaHashE(13.5)
+    clubes = [
+    'Boca', 'River', 'Racing', 'San Lorenzo', 'Velez',
+    'Argentinos Juniors', 'Arsenal', 'Atlético Tucumán', 'Banfield', 'Barracas Central',
+    'Belgrano', 'Central Córdoba (SdE)', 'Defensa y Justicia', 'Deportivo Riestra', 'Estudiantes (LP)',
+    'Gimnasia (LP)', 'Godoy Cruz', 'Huracán', 'Independiente', 'Instituto',
+    'Lanús', 'Newells Old Boys', 'Platense', 'Rosario Central', 'Sarmiento (J)',
+    'Talleres (C)', 'Tigre', 'Unión (SF)', 'Vélez Sarsfield', 'Colón'
+    ]
+    
     # Insertar
-    for club in equipos:
+    for club in clubes:
         t_encadenada.insertarEquipos(club)
         
     # Mostrar tabla
