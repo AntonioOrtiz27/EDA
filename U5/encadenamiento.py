@@ -35,6 +35,7 @@ class TablaHashE:
     
     def metodo_extraccion(self,clave):
         return int(clave[-3:])
+    
     def metodo_plegado(self,clave):
         clave_str = str(clave)
         suma = 0
