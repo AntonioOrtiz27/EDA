@@ -12,6 +12,12 @@ class TablaHashA:
         self.__tamaño = int(np.ceil(self.getPrimo(tamaño/0.7)))
         self.__tabla = np.full(self.__tamaño,None,dtype = object)
         
+    def getPrimo(self,n):
+        n += 1
+        while not self.es_primo(n):
+            n += 1
+        return n
+    
     def es_primo(self,n):
         if n <= 1:
             return False
@@ -20,11 +26,6 @@ class TablaHashA:
                 return False
         return True
 
-    def getPrimo(self,n):
-        n += 1
-        while not self.es_primo(n):
-            n += 1
-        return n
         
     def metodo_division(self, valor:int):
         #Metodo de transformacion hay varios, este especificamente solo funciona para enteros

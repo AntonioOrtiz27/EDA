@@ -8,8 +8,8 @@ class ColaSecuencial:
     #Crear
     def __init__(self,maximo : int):
         self.__lista = np.empty(maximo,dtype=int)
-        self.__Pr = -1
-        self.__Ul = -1
+        self.__Pr = 0
+        self.__Ul = 0
         self.__max = maximo
         self.__cant = 0
         
