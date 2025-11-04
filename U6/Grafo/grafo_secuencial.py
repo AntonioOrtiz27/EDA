@@ -1,7 +1,15 @@
 """@author: Antonio Ortiz"""
 import numpy as np
-from COLA_ENC import Cola
-from Pila_Enc import Pila
+
+try:
+    # Se ejecuta desde el proyecto completo (menu.py)
+    from Grafo.COLA_ENC import *
+    from Grafo.Pila_ENC import *
+except ModuleNotFoundError:
+    # Se ejecuta directamente desde dentro de Grafo/
+    from COLA_ENC import *
+    from Pila_ENC import *
+
 
 # Tad de Grafo Secuencial
 class Grafo:
@@ -29,9 +37,9 @@ class Grafo:
         
     def adyacentes(self,origen):
         adyacentes = []
-        for i in range(self.__numVertices):
-            if self.__matriz[origen][i] == 1:
-                adyacentes.append(i)
+        for v in range(self.__numVertices):
+            if self.__matriz[origen][v] == 1:
+                adyacentes.append(v)
         return adyacentes
     
     def adyacente(self,xnodo,xady):

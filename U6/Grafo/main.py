@@ -1,8 +1,6 @@
 """@author: Antonio Ortiz"""
 import numpy as np
-from grafo_sec import Grafo
-from COLA_ENC import Cola
-from Pila_Enc import Pila
+from grafo_secuencial import Grafo
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -11,13 +9,13 @@ if __name__ == "__main__":
     # Nodos: 0 1 2 3
     
     # lista de arcos de grafo conexo
-    # lista = [(0,2) , (0,3) , (1,2) , (1,3) , (2,3)]
+    lista = [(0,2) , (0,3) , (1,2) , (1,3) , (2,3)]
     
     # lista de arcos de grafo Simple conexo
     # lista = [(1,2) , (1,3) , (2,3)]
     
     # lista de arcos de grafo Aciclico
-    lista = [(0, 1), (0, 2), (2, 3)]
+    # lista = [(0, 1), (0, 2), (2, 3)]
     
     """----- Grafo en representacion Secuencial -----"""
     
@@ -68,7 +66,6 @@ if __name__ == "__main__":
         print("El grafo es aciclico\n")
     else:
         print("El grafo no es aciclico\n")
-
     
     """----- Graficar el Grafo Conexo ------"""
     # Crear un grafo dirigido
