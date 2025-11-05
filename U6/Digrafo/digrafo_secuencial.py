@@ -16,6 +16,7 @@ class Digrafo:
             self.__matriz[origen][destino] = 1
         else:
             print(f"La arista ({origen},{destino}) ya existe")
+            
     # Mostrar matriz de adyacencia 
     def mostrarMatriz(self):
         print(self.__matriz)
@@ -53,26 +54,37 @@ class Digrafo:
     # Funcion: Evalúa si u es nodo fuente de G 
     # Salida: V si u es nodo fuente de G    
 
+    # grado de entrada = 0 y grado de salida > 0
     def nodoFuente(self, u):
-        i = 0
-        while i < self.__numVertices:
-            if self.__matriz[i, u] == 1:
-                print(f"El nodo {u} no es fuente")
-                return
-            i += 1
-        print(f"El nodo {u} es fuente")
+        if self.grado_entrada(u) == 0 and self.grado_salida(u) > 0:
+            print(f"El nodo {u} es fuente")
+        else:
+            print(f"El nodo {u} no es fuente")
     
     # Operación: Nodo Sumidero
     # Funcion: Evalúa si u es nodo sumidero de G
     # Salida: V si u es nodo sumidero de G
     
+    # grado de salida = 0 y grado de entrada > 0
     def nodoSumidero(self, u):
-        i = 0
-        while i < self.__numVertices:
-            if self.__matriz[u, i] == 1:
-                print(f"El nodo {u} no es sumidero")
-                return
-            i += 1
-        print(f"El nodo {u} es sumidero")
+        if self.grado_salida(u) == 0 and self.grado_entrada(u) > 0:
+            print(f"El nodo {u} es sumidero")
+        else:
+            print(f"El nodo {u} no es sumidero")
+        
+    """
+    Preguntas Posibles de digrafo secuencial
+    - Implemente la operación que muestre todos los nodos sumideros, 
+    para ello implemente las operaciones grado de entrada y grado de salida(la que sea necesaria) 
+    
+    - Implemente la operación que muestre todos los nodos fuente,
+    para ello implemente las operaciones grado de entrada y grado de salida (la que sea necesaria)
+    
+    - Implemente la operación que genere la Matriz de Adyacencia.(Inicializar la matriz en 0 en el constructor)
+    
+    - Mostrar los adyacentes de un Nodo.
+    
+    - Agregar Aristas (No lo evaluaron pero podria ir tranquilamente)
+    """
         
         
