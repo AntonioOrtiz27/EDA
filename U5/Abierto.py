@@ -1,15 +1,17 @@
 import numpy as np
+from sympy import nextprime
+
 
 class TablaHashA:
     __tamaño : int
-    __tabla : np.array
+    __tabla : np.ndarray
 
-    def __init__(self,tamaño : int):
+    def __init__(self,tamaño : int,FCarga= 0.7):
         #El tamaño del arreglo debe ser la cantidad de valor necesario a guardar (m) dividido en 0.7 y dicho numero debe ser primo
         #aqui lo que hago es obtener el entero del tamaño dividido en 0.7 luego redondearlo ya que necesito un numero entero y finalmente
         #envio el valor resultante a la funcion obtener primo que devuelve el valor que envie si es primo o el primo siguiente
         #asi finalmente el tamaño de la tabla es un primo que cumple con las condiciones necesarias
-        self.__tamaño = int(np.ceil(self.getPrimo(tamaño/0.7)))
+        self.__tamaño = int(np.ceil(self.getPrimo(tamaño/FCarga)))
         self.__tabla = np.full(self.__tamaño,None,dtype = object)
         
     def getPrimo(self,n):
@@ -25,7 +27,9 @@ class TablaHashA:
             if n % i == 0:
                 return False
         return True
-
+    
+    def getPrimoIlegal(self, n): 
+        return nextprime(n)
         
     def metodo_division(self, valor:int):
         #Metodo de transformacion hay varios, este especificamente solo funciona para enteros
@@ -105,16 +109,24 @@ class TablaHashA:
     def buscar(self, valor):
         indice = self.metodo_division(valor)
         encontrado = False
+        intentos = 1
+        
         if self.__tabla[indice] == valor: # si el valor de la posicion encontrada con hash es igual al valor se encontro el valor, no hubo colisiones
+            print(f"el valor {valor} se encontro en el indice {indice} en {intentos} intentos")
             encontrado = True
-            print(f"el valor {valor} se encontro en el indice {indice}")
-        else: #sino es que hubo colisiones :c
+        else: #sino es que hubo colisiones 
             fin = indice
             indice = (indice + 1) % self.__tamaño  #nos permite hacer la busqueda circular
             while self.__tabla[indice] != valor and indice != fin:
+                intentos += 1
                 indice = (indice + 1) % self.__tamaño
+
             if indice != fin:
+                print(f"El valor {valor} se encontró en el índice {indice} en {intentos} intento(s).")
                 encontrado = True
+        if encontrado == False:
+            print(f"El valor {valor} no se encontró en la tabla después de {intentos} intento(s).")
+        
         return encontrado
     
     def buscarClubes(self, valor):

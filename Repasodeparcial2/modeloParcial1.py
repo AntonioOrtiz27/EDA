@@ -96,7 +96,7 @@ class Arbol1:
                 print(f"Nodo con un solo hijo: {nodo.getDato()}")
             c += self.preorden(nodo.getIzq())
             c += self.preorden(nodo.getDer())
-        
+        print("\nTotal de nodos con un solo descendiente directo:",c)
         return c
 
     """--- Fin de Ejercicio 1 ---"""

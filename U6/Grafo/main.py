@@ -37,6 +37,11 @@ if __name__ == "__main__":
     print("los nodos adyacentes de 2 son:",grafo.adyacentes(2))
     print("los nodos adyacentes de 3 son:",grafo.adyacentes(3))
     print()
+    u = int(input("Ingrese el vértice origen: "))
+    v = int(input("Ingrese el vértice destino: "))
+    grafo.dos_vertices_son_adyacentes(u, v)
+    print()
+
     
     """ BFS ITERATIVO """
     print("Busqueda BFS desde el nodo 0:",grafo.bfs_Iterativo(0))

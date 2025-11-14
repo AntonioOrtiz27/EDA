@@ -31,6 +31,13 @@ class Digrafo:
             if self.__matriz[origen][v] == 1:
                 lista.append(v)
         return lista
+    
+    def dos_Vertices_son_adyacentes(self,u,v):
+        if 0 <= u < self.__vertices and 0 <= v < self.__vertices:
+            if self.__matriz[u][v] == 1 or self.__matriz[v][u] == 1:
+                print(f"{u} y {v} son adyacentes")
+            else:
+                print(f"{u} y {v} no son adyacentes")
 
     # Operación: Grado de Entrada 
     # Funcion: Determina cantidad de aristas que llegan a u
@@ -48,7 +55,11 @@ class Digrafo:
     # Salida: Reporta el grado de salida de u
     
     def grado_salida(self,u):
-        return len(self.adyacentes(u))
+        cont = 0
+        for i in range(self.__numVertices):
+            if self.__matriz[u][i] == 1:
+                cont+=1
+        return cont
     
     # Operación: Nodo Fuente
     # Funcion: Evalúa si u es nodo fuente de G 

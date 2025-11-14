@@ -22,6 +22,7 @@ class ColaEncadenada:
     __primero : Celda
     __ultimo : Celda
     __cant : int
+    
     #crear
     def __init__(self):
         self.__primero = None

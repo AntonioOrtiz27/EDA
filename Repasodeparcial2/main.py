@@ -1,6 +1,6 @@
-from modeloParcial2 import *
 from modeloParcial1 import *
-
+from modeloParcial2 import *
+from modeloParcial3 import *
 
 def modeloParcial():
     opcion = int(input("""
@@ -40,6 +40,22 @@ def menu2():
                    --->"""))
     return op
 
+def menu3():
+    op = int(input("""
+                   [0] Para salir
+                   
+                   [1] Mostrar [ABB] en terminal
+                   [2] Inciso 1-b) Mostrar Descendientes directos de un nodo
+                   
+                   [3] Mostrar [DIGRAFO] y Matriz de Adyacencia
+                   [4] Inciso 2-b) Nodos Adyacentes de un nodo
+                   
+                   [5] Mostrar [TABLA HASH] en terminal
+                   [6] Inciso 3-c) Insertar_Clave()
+                   
+                   --->"""))
+    return op
+
 if __name__ == "__main__":
     
     """--- Modelo de parcial 1 ---"""
@@ -72,6 +88,12 @@ if __name__ == "__main__":
     aristas2 = [(1,0),  (1,2) , (2,0) , (4,0) , (4,1) , (4,3)]
     for u,v in aristas2:
         digrafo2.agregarAristas2(u,v)
+        
+    """--- Modelo de parcial 3 ---"""
+    arbol3 = Arbol3()
+    valores = [1,3,2,5,4,7,6,8]
+    for nodo in valores:
+        arbol3.insertar(arbol3.getRaiz(),nodo)
     
     
     opcion = modeloParcial()
@@ -114,10 +136,11 @@ if __name__ == "__main__":
                 elif opmenu1 == 4:
                     print("Mostrar todos los nodos sumidero")
                     digrafo.nodoSumideros()
-                    
+
                 opmenu1 = menu1()
                 
         elif opcion == 2:
+            
             print("""
                 --- Modelo de Parcial 2 ---
                 
@@ -169,3 +192,48 @@ if __name__ == "__main__":
                     digrafo.matrizAdyacencia()  
                 
                 opmenu2 = menu2()
+                
+        elif opcion == 3:
+            
+            print("""
+                --- Modelo de Parcial 3 ---
+                
+                Ejercicio 1: Considere el TAD árbol. 
+                a) Defina  el objeto de datos. 
+                b) Especifique e implemente la operación que imprima los descendientes 
+                terminales de un nodo ingresado previamente por teclado. 
+                
+                Ejercicio 2: Considere el TAD Digrafo, formado por N nodos. 
+                a) Construya el objeto de datos, usando la representación 
+                más adecuada para lograr la optimizar la operación indicada en el inciso 
+                b)Especifique e implemente la operación que muestre los adyacentes de un Nodo. 
+                
+                Ejercicio 3:  Considere trabajar con el TAD Tabla Hash, usando 
+                la política de manejo de colisiones Direccionamiento Abierto,
+                para una cantidad aproximada  de 500 claves, siendo  éstas números de Documento Nacional de Identidad. 
+                
+                a) Construya el objeto de datos 
+                b) Codifique la función hash Extracción. 
+                c) Especifique e implemente la operación Insertar_Clave(), 
+                trabajando con  la secuencia de prueba lineal.
+                """)
+            
+            opmenu3 = menu3()
+            while opmenu3 != 0:
+                if opmenu3 == 1:
+                    raiz_anytree = arbol3.convertir_a_anytree(arbol3.getRaiz())
+                    for pre, fill, node in RenderTree(raiz_anytree):
+                        print(f"{pre}{node.name}")
+                elif opmenu3 == 2:
+                    valor = int(input("Ingrese nodo para ver si tiene nodos hojas:"))
+                    arbol3.descendientesTerminales(arbol3.getRaiz(),valor)
+                elif opmenu3 == 3:
+                    pass
+                elif opmenu3 == 4:
+                    pass
+                elif opmenu3 == 5:
+                    pass
+                elif opmenu3 == 6:
+                    pass
+                opmenu3 = menu3()
+    opcion = modeloParcial()

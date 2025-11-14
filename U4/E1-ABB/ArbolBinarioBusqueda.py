@@ -130,7 +130,7 @@ class ArbolBinario:
     def buscar(self,nodo:Nodo,valor:int):
         if nodo is None:
             print(f"No se encontro el numero {valor}")
-            encontrado = None      
+            encontrado = None    
         else:
             if nodo.getDato() == valor:
                 print(f"Se encontro el numero {valor} ")
@@ -219,6 +219,15 @@ class ArbolBinario:
     def nivel(self,raiz,valor):
         return self._nivel(raiz,valor,1)
     
+    
+    def nodosNivel(self,raiz,nivel):
+        if raiz != None:
+            if nivel == 1:
+                print(raiz.getDato(), end=" ")
+            elif nivel > 1:
+                self.nodosNivel(raiz.getIzquierda(), nivel - 1)
+                self.nodosNivel(raiz.getDerecha(), nivel - 1)
+    
     def _altura(self,nodo):
         if nodo is None:
             aux = 0
@@ -267,14 +276,64 @@ class ArbolBinario:
                     nodo_actual = nodo_actual.getDerecha()
         return camino
 
-    def gradoNodo(self, valor: int):
-        nodo = self.buscar(self.__raiz, valor)
+    def gradoNodo(self,raiz, valor:int):
+        nodo = self.buscar(raiz, valor)
         if nodo is None:
             aux = None
         else:
             print(f"El grado del nodo {valor} es: {nodo.grado()}")
             aux= nodo.grado()
         return aux
+    
+    def gradoArbol(self,nodo):
+        if nodo is None:
+            aux = None
+        else:
+            aux = nodo.grado()
+            print(f"Grado del arbol: {aux}")
+            
+    # una función donde se ingresan dos claves, 
+    # decir si la segunda clave es descendiente directo de la primera clave.
+
+    def Dosclaves(self,padre,hijo):
+        nodo_padre= self.buscar(self.__raiz,padre)
+        bandera=False
+        
+        if nodo_padre is not None:
+            izq= nodo_padre.getIzquierda()
+            der= nodo_padre.getDerecha()
+            bandera= ((izq!=None and izq.getDato()==hijo) or (der!=None and der.getDato()==hijo))
+            
+        return bandera
+    
+    # una función que imprima todos los nodos hojas. (preorder)
+    def nodosHojas(self,nodo):
+        if nodo != None:
+            if nodo.grado() == 0:
+                print(nodo.getDato())
+            self.nodosHojas(nodo.getIzquierda())
+            self.nodosHojas(nodo.getDerecha())
+            
+    # --una función que retorne la cantidad de descendientes de una clave que se ingresa por teclado.
+    def inorder(self,nodo):
+        
+        c = 0
+        if nodo != None:
+            if nodo.grado() >= 1:
+                c+=1
+            c += self.inorder(nodo.getIzquierda())
+            c += self.inorder(nodo.getDerecha())
+        
+        return c
+    
+    def descendientes(self,raiz,clave_ingresada):
+        Nodo_buscado = self.buscar(raiz,clave_ingresada)
+        
+        if Nodo_buscado is not None:
+            c = self.inorder(Nodo_buscado)
+            print(f"Nodos descendientes de {clave_ingresada}: {c}")
+            
+            
 if __name__ == "__main__":
     arbol = ArbolBinario()
     for x in [15, 10, 20, 8, 12, 17, 25]:
@@ -359,6 +418,12 @@ if __name__ == "__main__":
     print("\nIndicar el nivel de un nodo")
     arbol.nivel(arbol.getRaiz(),8)
     arbol.nivel(arbol.getRaiz(),20)
+    print()
+    
+    print("\nMostrar nodos de acuerdo a nivel ingresado")
+    niv = int(input("ingrese nivel para mostrar que nodos hay:"))
+    arbol.nodosNivel(arbol.getRaiz(),niv)
+    print()
     
     #Altura del arbol
     print("\nAltura del arbol")
@@ -372,13 +437,33 @@ if __name__ == "__main__":
     print(arbol.camino(15, 25))
     print("\nCamino de 15 a 8")
     print(arbol.camino(15, 8))
+    print()
     
-    #Grado de un nodo
+    # Grado de un nodo
     print("\nGrado de un nodo")
-    arbol.gradoNodo(15)
-    arbol.gradoNodo(10)
-    arbol.gradoNodo(8)
-    arbol.gradoNodo(12)
+    arbol.gradoNodo(arbol.getRaiz(),15)
+    arbol.gradoNodo(arbol.getRaiz(),10)
+    arbol.gradoNodo(arbol.getRaiz(),8)
+    arbol.gradoNodo(arbol.getRaiz(),12)
+    print()
+    
+    # Grado del arbol
+    arbol.gradoArbol(arbol.getRaiz())
+    print()
+    
+    # Verificar si la segunda clave es descendiente directo de la primer clave
+    hijo= int(input("Ingrese la clave hijo:"))
+    padre= int(input("Ingrese la clave padre:"))
+    print(f"¿{hijo} es hijo de {padre}?",arbol.Dosclaves(padre,hijo))
+    print()
+    
+    # una función que imprima todos los nodos hojas. (preorder)
+    print("Todos los nodos hojas del arbol")
+    arbol.nodosHojas(arbol.getRaiz())
+    
+    # --una función que retorne la cantidad de descendientes de una clave que se ingresa por teclado.
+    nodo = int(input("Ingrese nodo para ver cuantos descendientes tiene:"))
+    arbol.descendientes(arbol.getRaiz(),nodo)
     
 print("\n---Fin TAD de Arbol Binario de Busqueda y sus Operaciones Básicas---")
         

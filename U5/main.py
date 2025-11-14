@@ -14,7 +14,8 @@ if __name__=="__main__":
         tabla_direccionamiento.insertar(clave)
         
     tabla_direccionamiento.buscar(467)
-    tabla_direccionamiento.buscar(400)
+    tabla_direccionamiento.buscar(66)
+    tabla_direccionamiento.buscar(285)
     
     tabla_direccionamiento.mostrarDireccionamiento()
     

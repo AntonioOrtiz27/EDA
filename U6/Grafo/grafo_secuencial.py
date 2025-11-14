@@ -44,6 +44,16 @@ class Grafo:
     
     def adyacente(self,xnodo,xady):
         return self.__matriz[xnodo-1][xady-1] == 1
+    
+    def dos_Vertices_son_adyacentes(self, u, v):
+        """Verifica si los vértices u y v son adyacentes en un grafo no dirigido."""
+        if 0 <= u < self.__vertices and 0 <= v < self.__vertices:
+            if self.__matriz[u][v] == 1:
+                print(f"{u} y {v} son adyacentes")
+            else:
+                print(f"{u} y {v} no son adyacentes")
+        else:
+            print("Uno o ambos vértices no existen en el grafo")
 
     # Operación: BFS(Busqueda en Amplitud)
     # Funcion: Procesa todos los elementos de G en Amplitud
