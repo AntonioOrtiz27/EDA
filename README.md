@@ -1,5 +1,10 @@
 🚀 Estructuras de Datos y Algoritmos
 
+
+
+
+
+
 Este repositorio contiene implementaciones y ejemplos prácticos de las principales estructuras de datos y algoritmos utilizados en informática.
 El objetivo es entender su funcionamiento interno, sus ventajas y limitaciones, y cómo aplicarlos para resolver problemas de manera eficiente.
 
@@ -75,7 +80,3 @@ Floyd
 Prim
 
 Kruskal
-
-🎯 Objetivo del Repositorio
-
-Proveer implementaciones claras y documentadas que sirvan como base para el aprendizaje, práctica y aplicación de estructuras de datos y algoritmos en proyectos académicos o profesionales.
