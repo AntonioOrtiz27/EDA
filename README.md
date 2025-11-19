@@ -1,6 +1,6 @@
 # 🚀 Estructuras de Datos y Algoritmos
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 Este repositorio contiene **implementaciones y ejemplos prácticos** de las principales **estructuras de datos** y **algoritmos**.  
