@@ -62,7 +62,7 @@ El objetivo es comprender su funcionamiento, ventajas y limitaciones, y aplicarl
   - Floyd
   - Prim
   - Kruskal
-
+  - La mochila con muchos elementos - Mochila (0-1)
 ---
 
 ## 💻 Instalación
